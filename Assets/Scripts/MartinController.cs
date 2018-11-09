@@ -10,6 +10,8 @@ public class MartinController : MonoBehaviour
 
     public GameObject trap;
 
+    public GameObject powerEffect;
+
     float height;
 
     void Start()
@@ -40,6 +42,7 @@ public class MartinController : MonoBehaviour
         {
             yield return new WaitForSeconds(2f);
             Instantiate(trap, gameObject.transform.position, Quaternion.identity);
+            Instantiate(powerEffect, gameObject.transform.position, Quaternion.identity);
         }
     }
 }
