@@ -213,7 +213,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.5001221, y: -377.1}
+  m_AnchoredPosition: {x: 1.5001221, y: -418}
   m_SizeDelta: {x: 803, y: 483.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &205817403
@@ -262,7 +262,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 58
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -576,8 +576,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.5, y: 58.4}
-  m_SizeDelta: {x: 803, y: 483.2}
+  m_AnchoredPosition: {x: 1.5, y: -26.499985}
+  m_SizeDelta: {x: 1128.3, y: 483.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1570102313
 MonoBehaviour:
@@ -613,9 +613,9 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "Na Martina medve\u010F l\xEDha, najm\xE4 ked Martin opit\xFD, s ko\u0148om
-    za\u010Dne prin\xE1\u0161a\u0165 zimu sk\xF4r ne\u017E treba. Ty, sv. Marek, ako
-    patr\xF3n dobr\xE9ho po\u010Dasia - na tebe je zachr\xE1nani\u0165 krajinu od
-    bl\xE1znivej zimy."
+    za\u010Dne prin\xE1\u0161a\u0165 zimu sk\xF4r ne\u017E treba. \n\nTy, sv. Marek,
+    ako patr\xF3n dobr\xE9ho po\u010Dasia - na tebe je zachr\xE1nani\u0165 krajinu
+    od bl\xE1znivej zimy."
 --- !u!222 &1570102314
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -868,7 +868,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 6ac0568efa34c45db819c761a4f72f87, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b60e8e13b42e74268ae39024f4d04ba8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
