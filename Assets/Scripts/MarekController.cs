@@ -4,29 +4,67 @@ using UnityEngine;
 
 public class MarekController : MonoBehaviour
 {
+    AudioSource MarekAudioSource;
+
     Rigidbody2D marekRb;
+    LineRenderer Beam;
     public float jumpForce = 10f;
     public float speed = 5f;
 
     public Transform groundCheck;
     public Transform gunPosition;
     public LayerMask whatIsGround;
-    bool grounded = false;
+    public bool grounded = false;
     bool justGrounded = false;
 
     public GameObject apple;
-    public GameObject Shooo;
+    public float appleManaCost = 100f;
+    public GameObject shootEffect;
     public GameObject jumpEffect;
+
+    public ParticleSystem LSMI;
+
+    public float maxMana  = 1000f;
+    public float currentManaState;
+
+    public float rechargeSpeed = 5f;
+
+    public bool CanDoLSMI;
+    public float LSMIManaCost = 250f;
+    bool isDoingLSMI = false;
+
+    public GameObject hitEffectGO;
+    public ParticleSystem hitEffect;
+
+    public bool OL;
+
+    public float LSMICharge = 1f;
+
+    public float floatingForce = 1f;
+    float currentLSMIChargeTime;
+
+    public bool isDoingSomething;
+    public float hitKickForce = 7f;
+
+    public Vector2 shotForce = new Vector2(1000, 500);
 
     void Start()
     {
+        Beam = GetComponent<LineRenderer>();
         marekRb = GetComponent<Rigidbody2D>();
+        currentManaState = maxMana;
+        MarekAudioSource = GetComponent<AudioSource>();
+        currentLSMIChargeTime = LSMICharge;
     }
 
     void Update()
     {
         DoJump();
         ShootApple();
+        RechargeMana();
+        LumosSolemMaximaIncantatem();
+
+        OL = LSMI.isPlaying;
     }
 
     private void FixedUpdate()
@@ -38,6 +76,25 @@ public class MarekController : MonoBehaviour
     {
         grounded = Physics2D.OverlapPoint(groundCheck.position, whatIsGround);
 
+        if (grounded)
+        {
+            if (justGrounded == false)
+            {
+                justGrounded = true;
+                Instantiate(jumpEffect, groundCheck.position, Quaternion.identity);
+                CanDoLSMI = false;
+                LSMI.Stop();
+                isDoingSomething = false;
+                ResetCharge();
+            }
+        }
+        else
+        {
+            justGrounded = false;
+        }
+
+        grounded = Physics2D.OverlapPoint(groundCheck.position, whatIsGround);
+
         if (Input.GetButtonDown("Jump"))
         {
             if(grounded)
@@ -47,17 +104,12 @@ public class MarekController : MonoBehaviour
             }
         }
 
-        if(grounded)
+        if (Input.GetButtonUp("Jump"))
         {
-            if(justGrounded == false)
+            if(!grounded)
             {
-                justGrounded = true;
-                Instantiate(jumpEffect, groundCheck.position, Quaternion.identity);
+                CanDoLSMI = true;
             }
-        }
-        else
-        {
-            justGrounded = false;
         }
     }
 
@@ -70,9 +122,108 @@ public class MarekController : MonoBehaviour
     {
         if(Input.GetButtonDown("Fire1"))
         {
-            Instantiate(Shooo, gunPosition.position, Quaternion.identity);
-            GameObject instance = Instantiate(apple, gunPosition.position, Quaternion.identity);
-            instance.GetComponent<Rigidbody2D>().AddForce(new Vector2(1000, 200));
+            if(currentManaState > appleManaCost)
+            {
+                GameObject instance = Instantiate(shootEffect, gunPosition.position, Quaternion.identity);
+                instance.transform.SetParent(gameObject.transform);
+
+                GameObject projectile = Instantiate(apple, gunPosition.position, Quaternion.identity);
+                projectile.GetComponent<Rigidbody2D>().AddForce(shotForce);
+
+                currentManaState -= appleManaCost;
+            }
         }
+    }
+
+    void RechargeMana()
+    {
+        if(currentManaState < maxMana)
+        {
+            if(!isDoingSomething)
+            {
+                currentManaState += rechargeSpeed * Time.deltaTime;
+            }
+        }
+    }
+
+    void LumosSolemMaximaIncantatem()
+    {
+        if(grounded == false)
+        {
+            if(currentManaState > 0)
+            {
+                if (Input.GetButton("Jump"))
+                {
+                    if (CanDoLSMI)
+                    {
+                        Charge();
+                        if(currentLSMIChargeTime < 0)
+                        {
+                            if(isDoingLSMI == false)
+                            {
+                                isDoingSomething = true;
+                                isDoingLSMI = true;
+                                LSMI.Play();
+                                hitEffect.Play();
+                            }
+                            currentManaState -= LSMIManaCost * Time.deltaTime;
+                            RaycastHit2D hit = Physics2D.Raycast(groundCheck.transform.position, Vector2.down);
+                            Beam.enabled = true;
+
+                            Beam.SetPosition(1, new Vector3( 0,-gameObject.transform.position.y,0));
+
+                            hitEffectGO.transform.position = new Vector3(gameObject.transform.position.x, 0, 0);
+
+                            if(marekRb.velocity.y < 0)
+                            {
+                                marekRb.velocity = new Vector2(marekRb.velocity.x, -floatingForce);
+                            }
+
+                            if (hit.transform.tag == "Trap1")
+                            {
+                                Destroy(hit.transform.gameObject);
+                                marekRb.velocity = new Vector2(marekRb.velocity.x, hitKickForce);
+                            }
+                        }
+                    }
+                }
+                if (Input.GetButtonUp("Jump"))
+                {
+                    if (isDoingLSMI)
+                    {
+                        Beam.enabled = false;
+                        //ResetCharge();
+                        LSMI.Stop();
+                        hitEffect.Stop();
+
+                        isDoingSomething = false;
+                        isDoingLSMI = false;
+                    }
+                }
+            }
+            else
+            {
+                Beam.enabled = false;
+                hitEffect.Stop();
+
+                ResetCharge();
+                LSMI.Stop();
+                isDoingLSMI = false;
+                isDoingSomething = false;
+            }
+        }
+    }
+
+    void Charge()
+    {
+        if(currentLSMIChargeTime > 0)
+        {
+            currentLSMIChargeTime -= Time.deltaTime;
+        }
+    }
+
+    void ResetCharge()
+    {
+        currentLSMIChargeTime = LSMICharge;
     }
 }
