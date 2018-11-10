@@ -8,21 +8,35 @@ public class MartinController : MonoBehaviour
     public float upAndDownSpeed = 5f;
     public float upAndDownRadius = 5f;
 
-    public GameObject trap;
+    public float minTimeToWait = 1f;
+    public float maxTimeToWait = 3f;
+
+
+    ScoreController scoreScript;
+    public GameObject scoreControllerGO;
+
+    public List<GameObject> traps = new List<GameObject>();
 
     public GameObject powerEffect;
+    Coroutine martinCoroutine;
 
     float height;
+    MarekController marek;
 
     void Start()
     {
+        scoreScript = scoreControllerGO.GetComponent<ScoreController>();
         height = transform.position.y;
-        StartCoroutine(LeaveTraps());
+        martinCoroutine = StartCoroutine(LeaveTraps());
+        marek = GameObject.FindObjectOfType<MarekController>();
     }
 
     void Update()
     {
-        
+        if(!marek.isAlive)
+        {
+            StopCoroutine(martinCoroutine);
+        }
     }
 
     private void FixedUpdate()
@@ -40,9 +54,15 @@ public class MartinController : MonoBehaviour
     {
         while(true)
         {
-            yield return new WaitForSeconds(2f);
-            Instantiate(trap, gameObject.transform.position, Quaternion.identity);
+            yield return new WaitForSeconds(Random.Range(minTimeToWait,maxTimeToWait));
+            Instantiate(traps[Random.Range(0,traps.Count)], gameObject.transform.position, Quaternion.identity);
             Instantiate(powerEffect, gameObject.transform.position, Quaternion.identity);
+            AddTrap();
         }
+    }
+
+    void AddTrap()
+    {
+        scoreScript.trapsSpawned++;
     }
 }
