@@ -12,12 +12,17 @@ public class MartinController : MonoBehaviour
 
     public GameObject powerEffect;
 
+    Animator martinAnimator;
+    int spellHash = Animator.StringToHash("spell");
+
     float height;
 
     void Start()
     {
         height = transform.position.y;
         StartCoroutine(LeaveTraps());
+
+        martinAnimator = GetComponent<Animator>();
     }
 
     void Update()
@@ -41,6 +46,8 @@ public class MartinController : MonoBehaviour
         while(true)
         {
             yield return new WaitForSeconds(2f);
+            martinAnimator.SetTrigger(spellHash);
+            yield return new WaitForSeconds(0.8f);
             Instantiate(trap, gameObject.transform.position, Quaternion.identity);
             Instantiate(powerEffect, gameObject.transform.position, Quaternion.identity);
         }

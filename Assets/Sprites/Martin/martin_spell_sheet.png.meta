@@ -1,15 +1,19 @@
 fileFormatVersion: 2
-guid: 4d4b8cecdd1534f08aa986d47497100f
+guid: 7fe6a8cdfcc19e844acbea3b7a8b7662
 TextureImporter:
   fileIDToRecycleName:
-    21300000: MM_itemsAttack_0
-    21300002: MM_itemsAttack_1
-    21300004: MM_itemsAttack_2
-    21300006: MM_itemsAttack_5
-    21300008: MM_itemsAttack_6
-    21300010: MM_itemsAttack_7
-    21300012: MM_itemsAttack_8
-    21300014: MM_itemsAttack_9
+    21300000: martin_spell_sheet_0
+    21300002: martin_spell_sheet_1
+    21300004: martin_spell_sheet_2
+    21300006: martin_spell_sheet_3
+    21300008: martin_spell_sheet_4
+    21300010: martin_spell_sheet_5
+    21300012: martin_spell_sheet_6
+    21300014: martin_spell_sheet_7
+    21300016: martin_spell_sheet_8
+    21300018: martin_spell_sheet_9
+    21300020: martin_spell_sheet_10
+    21300022: martin_spell_sheet_11
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -88,187 +92,245 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-  - serializedVersion: 2
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MM_itemsAttack_0
+      name: martin_spell_sheet_0
       rect:
         serializedVersion: 2
-        x: 13
-        y: 310
-        width: 174
-        height: 38
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 0
+        y: 0
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f87c740e16beb4060af8311e02ea6787
+      spriteID: a3fc12be2e0627243969e3af8851b300
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MM_itemsAttack_1
+      name: martin_spell_sheet_1
       rect:
         serializedVersion: 2
-        x: 13
-        y: 259
-        width: 121
-        height: 44
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 100
+        y: 0
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2446b885a74f940538de3fa04577eea5
+      spriteID: dad78b43dc5392d48b18769a9b2088ba
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MM_itemsAttack_2
+      name: martin_spell_sheet_2
       rect:
         serializedVersion: 2
-        x: 16
-        y: 229
-        width: 101
-        height: 20
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 200
+        y: 0
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8bb12d3248284437c90a7efbe632a41d
+      spriteID: 47a5c0e9681d82d45bf36a4f8573feed
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MM_itemsAttack_5
+      name: martin_spell_sheet_3
       rect:
         serializedVersion: 2
-        x: 9
-        y: 202
-        width: 156
-        height: 19
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 300
+        y: 0
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2279dc64cbc8a433b82985709fe42c9d
+      spriteID: b947dbf113081e047a3409e392716ab3
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MM_itemsAttack_6
+      name: martin_spell_sheet_4
       rect:
         serializedVersion: 2
-        x: 9
-        y: 162
-        width: 114
-        height: 29
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 400
+        y: 0
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3043c8fe124f045229894751fa7e8428
+      spriteID: 6615e584e90c6c64d99e8fbf6af3dd4b
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MM_itemsAttack_7
+      name: martin_spell_sheet_5
       rect:
         serializedVersion: 2
-        x: 6
-        y: 121
-        width: 134
-        height: 33
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 500
+        y: 0
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3fcf83e63d1834f41ac3478b25c4e694
+      spriteID: 0e00f26efc497a1439b82eb3aa315edf
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MM_itemsAttack_8
+      name: martin_spell_sheet_6
       rect:
         serializedVersion: 2
-        x: 13
-        y: 85
-        width: 99
-        height: 25
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 600
+        y: 0
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2b5a4589edbfc417f8e2cf2b191bf579
+      spriteID: c7ff93c11f1e6af4ab2472514ed4beb1
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MM_itemsAttack_9
+      name: martin_spell_sheet_7
       rect:
         serializedVersion: 2
-        x: 6
-        y: 59
-        width: 130
-        height: 15
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 700
+        y: 0
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 16b29d58acc374210a9ea74f7c1d06ba
+      spriteID: 4368af030cdbe8045b6015ddfbc84425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: martin_spell_sheet_8
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 0
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46226c44068b1444aa81bc054563f535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: martin_spell_sheet_9
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 0
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 001c482461a87ca4984eb987c767dd44
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: martin_spell_sheet_10
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 0
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec51be3aa0c7dcc4488055e30da79249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: martin_spell_sheet_11
+      rect:
+        serializedVersion: 2
+        x: 1100
+        y: 0
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e1592f326b775f4e8f9b915219fa1c7
       vertices: []
       indices: 
       edges: []

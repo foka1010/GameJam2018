@@ -55,6 +55,11 @@ public class MarekController : MonoBehaviour
 
     public float chargeCost = 200f;
 
+    Animator marekAnimator;
+    int vSpeedHash = Animator.StringToHash("yVelocity");
+    int groundedHash = Animator.StringToHash("grounded");
+
+
     void Start()
     {
         Beam = GetComponent<LineRenderer>();
@@ -63,6 +68,7 @@ public class MarekController : MonoBehaviour
         MarekAudioSource = GetComponent<AudioSource>();
         currentLSMIChargeTime = LSMICharge;
         currentSpeed = speed;
+        marekAnimator = GetComponent<Animator>();
     }
 
     void Update()
@@ -72,6 +78,7 @@ public class MarekController : MonoBehaviour
         RechargeMana();
         LumosSolemMaximaIncantatem();
         ChargeAttack();
+        marekAnimator.SetFloat(vSpeedHash, marekRb.velocity.y);
 
         OL = LSMI.isPlaying;
     }
@@ -84,6 +91,7 @@ public class MarekController : MonoBehaviour
     void DoJump()
     {
         grounded = Physics2D.OverlapPoint(groundCheck.position, whatIsGround);
+        marekAnimator.SetBool(groundedHash, grounded);
 
         if (grounded)
         {
@@ -179,9 +187,9 @@ public class MarekController : MonoBehaviour
                             RaycastHit2D hit = Physics2D.Raycast(groundCheck.transform.position, Vector2.down);
                             Beam.enabled = true;
 
-                            Beam.SetPosition(1, new Vector3( 0,-gameObject.transform.position.y,0));
+                            Beam.SetPosition(1, new Vector3( 0,-gameObject.transform.position.y - 2.5F ,0));
 
-                            hitEffectGO.transform.position = new Vector3(gameObject.transform.position.x, 0, 0);
+                            hitEffectGO.transform.position = new Vector3(gameObject.transform.position.x, -2F, 0);
 
                             if(marekRb.velocity.y < 0)
                             {

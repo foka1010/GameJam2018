@@ -1,15 +1,15 @@
 fileFormatVersion: 2
-guid: 4d4b8cecdd1534f08aa986d47497100f
+guid: 24db01069e8989248b6ab793247fbb04
 TextureImporter:
   fileIDToRecycleName:
-    21300000: MM_itemsAttack_0
-    21300002: MM_itemsAttack_1
-    21300004: MM_itemsAttack_2
-    21300006: MM_itemsAttack_5
-    21300008: MM_itemsAttack_6
-    21300010: MM_itemsAttack_7
-    21300012: MM_itemsAttack_8
-    21300014: MM_itemsAttack_9
+    21300000: marek_run_sheet_0
+    21300002: marek_run_sheet_1
+    21300004: marek_run_sheet_2
+    21300006: marek_run_sheet_3
+    21300008: marek_run_sheet_4
+    21300010: marek_run_sheet_5
+    21300012: marek_run_sheet_6
+    21300014: marek_run_sheet_7
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -88,187 +88,165 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-  - serializedVersion: 2
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-  - serializedVersion: 2
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MM_itemsAttack_0
+      name: marek_run_sheet_0
       rect:
         serializedVersion: 2
-        x: 13
-        y: 310
-        width: 174
-        height: 38
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 0
+        y: 0
+        width: 85
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f87c740e16beb4060af8311e02ea6787
+      spriteID: 87f32b755f86dd947bed8f9ce943b9b6
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MM_itemsAttack_1
+      name: marek_run_sheet_1
       rect:
         serializedVersion: 2
-        x: 13
-        y: 259
-        width: 121
-        height: 44
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 85
+        y: 0
+        width: 85
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2446b885a74f940538de3fa04577eea5
+      spriteID: bb7368e062010874f8284154fe8740a3
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MM_itemsAttack_2
+      name: marek_run_sheet_2
       rect:
         serializedVersion: 2
-        x: 16
-        y: 229
-        width: 101
-        height: 20
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 170
+        y: 0
+        width: 85
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8bb12d3248284437c90a7efbe632a41d
+      spriteID: 79ae4c89bd53e4749a4b305a585cb29e
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MM_itemsAttack_5
+      name: marek_run_sheet_3
       rect:
         serializedVersion: 2
-        x: 9
-        y: 202
-        width: 156
-        height: 19
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 255
+        y: 0
+        width: 85
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2279dc64cbc8a433b82985709fe42c9d
+      spriteID: 0658c79a59e412845b29a551dc35d0bf
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MM_itemsAttack_6
+      name: marek_run_sheet_4
       rect:
         serializedVersion: 2
-        x: 9
-        y: 162
-        width: 114
-        height: 29
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 340
+        y: 0
+        width: 85
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3043c8fe124f045229894751fa7e8428
+      spriteID: 4657ca3a752f3134fa887a057fee16d6
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MM_itemsAttack_7
+      name: marek_run_sheet_5
       rect:
         serializedVersion: 2
-        x: 6
-        y: 121
-        width: 134
-        height: 33
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 425
+        y: 0
+        width: 85
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3fcf83e63d1834f41ac3478b25c4e694
+      spriteID: 53bd392e701448e4488f628f57325656
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MM_itemsAttack_8
+      name: marek_run_sheet_6
       rect:
         serializedVersion: 2
-        x: 13
-        y: 85
-        width: 99
-        height: 25
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 510
+        y: 0
+        width: 85
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2b5a4589edbfc417f8e2cf2b191bf579
+      spriteID: 7ab8362c0cbaac3449a91df527275c4c
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MM_itemsAttack_9
+      name: marek_run_sheet_7
       rect:
         serializedVersion: 2
-        x: 6
-        y: 59
-        width: 130
-        height: 15
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 595
+        y: 0
+        width: 85
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 16b29d58acc374210a9ea74f7c1d06ba
+      spriteID: cdf4324c7fffa524c9eb57597bcd3e5a
       vertices: []
       indices: 
       edges: []
