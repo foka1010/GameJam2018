@@ -19,9 +19,12 @@ public class MartinController : MonoBehaviour
 
     public GameObject powerEffect;
     Coroutine martinCoroutine;
-
+    
     float height;
     MarekController marek;
+
+    Animator martinAnimator;
+    int spellHash = Animator.StringToHash("spell");
 
     void Start()
     {
@@ -29,6 +32,7 @@ public class MartinController : MonoBehaviour
         height = transform.position.y;
         martinCoroutine = StartCoroutine(LeaveTraps());
         marek = GameObject.FindObjectOfType<MarekController>();
+        martinAnimator = GetComponent<Animator>();
     }
 
     void Update()
@@ -55,6 +59,8 @@ public class MartinController : MonoBehaviour
         while(true)
         {
             yield return new WaitForSeconds(Random.Range(minTimeToWait,maxTimeToWait));
+            martinAnimator.SetTrigger(spellHash);
+            yield return new WaitForSeconds(0.8f);
             Instantiate(traps[Random.Range(0,traps.Count)], gameObject.transform.position, Quaternion.identity);
             Instantiate(powerEffect, gameObject.transform.position, Quaternion.identity);
             AddTrap();

@@ -65,6 +65,9 @@ public class MarekController : MonoBehaviour
     public GameObject hsGO;
 
     public float chargeCost = 200f;
+    Animator marekAnimator;
+    int yVelocityHash = Animator.StringToHash("yVelocity");
+    int groundedHash = Animator.StringToHash("grounded");
 
     void Start()
     {
@@ -77,6 +80,7 @@ public class MarekController : MonoBehaviour
         currentLSMIChargeTime = LSMICharge;
         currentSpeed = speed;
         paralaxScript = GameObject.FindObjectOfType<FreeParallax>();
+        marekAnimator = GetComponent<Animator>();
     }
 
     void Update()
@@ -89,6 +93,7 @@ public class MarekController : MonoBehaviour
             RechargeMana();
             LumosSolemMaximaIncantatem();
             ChargeAttack();
+            marekAnimator.SetFloat(yVelocityHash,marekRb.velocity.y);
             Die();
         }
     }
@@ -104,6 +109,7 @@ public class MarekController : MonoBehaviour
     void DoJump()
     {
         grounded = Physics2D.OverlapPoint(groundCheck.position, whatIsGround);
+        marekAnimator.SetBool(groundedHash, grounded);
 
         if (grounded)
         {

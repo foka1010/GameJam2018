@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074, b: 0.35872698, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5521,7 +5521,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   upAndDownSpeed: 4
-  upAndDownRadius: 2
+  upAndDownRadius: 1
   minTimeToWait: 0.5
   maxTimeToWait: 2
   scoreControllerGO: {fileID: 691112741}
@@ -5568,7 +5568,7 @@ SpriteRenderer:
   m_SortingLayerID: 47512073
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c5906b796753e2346839d42a1bfe7864, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9c41a50cdf746414bba15dd360165334, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5588,7 +5588,7 @@ Animation:
   m_GameObject: {fileID: 759901190}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 0}
+  m_Animation: {fileID: 7400000, guid: 450f6dca0dcd5e146814ac9e6aee85b2, type: 2}
   m_Animations: []
   m_WrapMode: 0
   m_PlayAutomatically: 1
@@ -5604,7 +5604,7 @@ Animator:
   m_GameObject: {fileID: 759901190}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8e77c3e04be86ac419ca766a2e8af5b8, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -11526,8 +11526,8 @@ SpriteRenderer:
   m_SortingLayerID: 47512073
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c5906b796753e2346839d42a1bfe7864, type: 3}
-  m_Color: {r: 0.6981132, g: 0.06397258, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 24db01069e8989248b6ab793247fbb04, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -11565,7 +11565,7 @@ Animator:
   m_GameObject: {fileID: 1836753762}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 09acf829ec80a564b89b3119d715b9ef, type: 2}
+  m_Controller: {fileID: 9100000, guid: 170baf7d2da13d54c9c7b8a33e245c52, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -11583,7 +11583,7 @@ Animation:
   m_GameObject: {fileID: 1836753762}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 0}
+  m_Animation: {fileID: 7400000, guid: 3ee0c7e032ec0e94da952b01eebcbd45, type: 2}
   m_Animations: []
   m_WrapMode: 0
   m_PlayAutomatically: 1
