@@ -20,7 +20,7 @@ public class TrapScript : MonoBehaviour
     {
         if(collision.transform.tag == "Projectile")
         {
-            Instantiate(destroyEffect, collision.transform.position, Quaternion.identity);
+            Instantiate(destroyEffect, gameObject.transform.position, Quaternion.identity);
             Destroy(gameObject);
             Destroy(collision.gameObject);
         }

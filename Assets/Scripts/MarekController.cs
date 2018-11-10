@@ -10,7 +10,9 @@ public class MarekController : MonoBehaviour
     LineRenderer Beam;
     public float jumpForce = 10f;
     public float speed = 5f;
+    float currentSpeed;
 
+    public GameObject chargeAttackEffect;
     public Transform groundCheck;
     public Transform gunPosition;
     public LayerMask whatIsGround;
@@ -47,6 +49,11 @@ public class MarekController : MonoBehaviour
     public float hitKickForce = 7f;
 
     public Vector2 shotForce = new Vector2(1000, 500);
+    public float chargeDistance = 2f;
+    public LayerMask whatIsFog;
+    public GameObject fogDestroyEffect;
+
+    public float chargeCost = 200f;
 
     void Start()
     {
@@ -55,6 +62,7 @@ public class MarekController : MonoBehaviour
         currentManaState = maxMana;
         MarekAudioSource = GetComponent<AudioSource>();
         currentLSMIChargeTime = LSMICharge;
+        currentSpeed = speed;
     }
 
     void Update()
@@ -63,6 +71,7 @@ public class MarekController : MonoBehaviour
         ShootApple();
         RechargeMana();
         LumosSolemMaximaIncantatem();
+        ChargeAttack();
 
         OL = LSMI.isPlaying;
     }
@@ -115,7 +124,7 @@ public class MarekController : MonoBehaviour
 
     void Move()
     {
-        marekRb.velocity = new Vector2(speed, marekRb.velocity.y);
+        marekRb.velocity = new Vector2(currentSpeed, marekRb.velocity.y);
     }
 
     void ShootApple()
@@ -225,5 +234,30 @@ public class MarekController : MonoBehaviour
     void ResetCharge()
     {
         currentLSMIChargeTime = LSMICharge;
+    }
+
+
+    void ChargeAttack()
+    {
+        if(Input.GetButtonDown("Fire2"))
+        {
+            if(currentManaState > chargeCost)
+            {
+
+                currentManaState -= chargeCost;
+                Instantiate(chargeAttackEffect, gameObject.transform.position, Quaternion.identity);
+
+                RaycastHit2D hit2 = Physics2D.Raycast(gunPosition.transform.position, Vector2.right, chargeDistance, whatIsFog);
+
+                if (hit2.transform.gameObject != null)
+                {
+                    if (hit2.transform.tag == "Fog")
+                    {
+                        Destroy(hit2.transform.gameObject);
+                        Instantiate(fogDestroyEffect, hit2.point, Quaternion.identity);
+                    }
+                }
+            }
+        }
     }
 }
