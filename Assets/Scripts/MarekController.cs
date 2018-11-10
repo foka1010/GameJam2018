@@ -4,7 +4,16 @@ using UnityEngine;
 
 public class MarekController : MonoBehaviour
 {
+    ScoreController scoreControllerScript;
+    public GameObject scoreControllerGO;
+    FreeParallax paralaxScript;
+    public GameObject deathEffect;
+
+    public bool isAlive = true;
+    public int Lives = 5;
+
     AudioSource MarekAudioSource;
+    public GameObject booEffect;
 
     Rigidbody2D marekRb;
     LineRenderer Beam;
@@ -38,8 +47,6 @@ public class MarekController : MonoBehaviour
     public GameObject hitEffectGO;
     public ParticleSystem hitEffect;
 
-    public bool OL;
-
     public float LSMICharge = 1f;
 
     public float floatingForce = 1f;
@@ -52,33 +59,46 @@ public class MarekController : MonoBehaviour
     public float chargeDistance = 2f;
     public LayerMask whatIsFog;
     public GameObject fogDestroyEffect;
+    public GameObject frostDestroyEffect;
+
+    HealthScript healthScript;
+    public GameObject hsGO;
 
     public float chargeCost = 200f;
 
     void Start()
     {
+        healthScript = hsGO.GetComponent<HealthScript>();
+        scoreControllerScript = scoreControllerGO.GetComponent<ScoreController>();
         Beam = GetComponent<LineRenderer>();
         marekRb = GetComponent<Rigidbody2D>();
         currentManaState = maxMana;
         MarekAudioSource = GetComponent<AudioSource>();
         currentLSMIChargeTime = LSMICharge;
         currentSpeed = speed;
+        paralaxScript = GameObject.FindObjectOfType<FreeParallax>();
     }
 
     void Update()
     {
-        DoJump();
-        ShootApple();
-        RechargeMana();
-        LumosSolemMaximaIncantatem();
-        ChargeAttack();
-
-        OL = LSMI.isPlaying;
+        if(isAlive)
+        {
+            paralaxScript.Speed = -marekRb.velocity.x;
+            DoJump();
+            ShootApple();
+            RechargeMana();
+            LumosSolemMaximaIncantatem();
+            ChargeAttack();
+            Die();
+        }
     }
 
     private void FixedUpdate()
     {
-        Move();
+        if (isAlive)
+        {
+            Move();
+        }
     }
 
     void DoJump()
@@ -188,10 +208,12 @@ public class MarekController : MonoBehaviour
                                 marekRb.velocity = new Vector2(marekRb.velocity.x, -floatingForce);
                             }
 
-                            if (hit.transform.tag == "Trap1")
+                            if (hit.transform.tag == "Frost")
                             {
+                                TrapDestroyed();
                                 Destroy(hit.transform.gameObject);
                                 marekRb.velocity = new Vector2(marekRb.velocity.x, hitKickForce);
+                                Instantiate(frostDestroyEffect, hit.point, Quaternion.identity);
                             }
                         }
                     }
@@ -243,7 +265,6 @@ public class MarekController : MonoBehaviour
         {
             if(currentManaState > chargeCost)
             {
-
                 currentManaState -= chargeCost;
                 Instantiate(chargeAttackEffect, gameObject.transform.position, Quaternion.identity);
 
@@ -253,11 +274,60 @@ public class MarekController : MonoBehaviour
                 {
                     if (hit2.transform.tag == "Fog")
                     {
+                        TrapDestroyed();
                         Destroy(hit2.transform.gameObject);
                         Instantiate(fogDestroyEffect, hit2.point, Quaternion.identity);
                     }
                 }
             }
+        }
+    }
+
+    void TrapDestroyed()
+    {
+        scoreControllerScript.trapsDestroyed++;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Fog")
+        {
+            healthScript.TakeLive();
+            Lives--;
+            marekRb.velocity = new Vector2(marekRb.velocity.x, hitKickForce);
+            Destroy(collision.gameObject);
+            scoreControllerScript.trapsDestroyed++;
+            Instantiate(booEffect, gameObject.transform.position, Quaternion.identity);
+        }
+        if (collision.gameObject.tag == "Frost")
+        {
+            healthScript.TakeLive();
+            Lives--;
+            marekRb.velocity = new Vector2(marekRb.velocity.x, hitKickForce);
+            Destroy(collision.gameObject);
+            scoreControllerScript.trapsDestroyed++;
+            Instantiate(booEffect, gameObject.transform.position, Quaternion.identity);
+        }
+        if (collision.gameObject.tag == "Cloud")
+        {
+            healthScript.TakeLive();
+            Lives--;
+            marekRb.velocity = new Vector2(marekRb.velocity.x, hitKickForce);
+            Destroy(collision.gameObject);
+            scoreControllerScript.trapsDestroyed++;
+            Instantiate(booEffect, gameObject.transform.position, Quaternion.identity);
+        }
+    }
+
+    void Die()
+    {
+        if(Lives == 0)
+        {
+            Instantiate(deathEffect, gameObject.transform.position, Quaternion.identity);
+            paralaxScript.Speed = 0;
+            isAlive = false;
+            marekRb.velocity = Vector2.zero;
+            scoreControllerScript.ShowEndPanel();
         }
     }
 }

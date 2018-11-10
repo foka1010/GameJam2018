@@ -5,7 +5,7 @@ using UnityEngine;
 public class CloudScript : MonoBehaviour
 {
     Vector3 finalPosition;
-
+    ScoreController scoreControllerScript;
     public float min;
     public float max;
 
@@ -13,7 +13,7 @@ public class CloudScript : MonoBehaviour
 
     void Start()
     {
-        
+        scoreControllerScript = GameObject.FindObjectOfType<ScoreController>();
     }
 
     void Update()
@@ -28,6 +28,7 @@ public class CloudScript : MonoBehaviour
             Instantiate(destroyEffect, collision.transform.position, Quaternion.identity);
             Destroy(gameObject);
             Destroy(collision.gameObject);
+            scoreControllerScript.trapsDestroyed++; 
         }
     }
 }
