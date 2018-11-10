@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class ScoreController : MonoBehaviour
 {
     public int trapsSpawned = 0;
-    public int trapsDestroyed = 0;
+    public float trapsDestroyed = 0;
 
     public GameObject EndPanel;
     bool canRestart = false;
@@ -15,6 +15,7 @@ public class ScoreController : MonoBehaviour
     MarekController marek;
 
     public Image temperatureBar;
+    public Text scoreText;
 
     void Start()
     {
@@ -46,7 +47,8 @@ public class ScoreController : MonoBehaviour
         yield return new WaitForSeconds(4f);
         EndPanel.SetActive(true);
         canRestart = true;
-        temperatureBar.fillAmount = 0.5f;
+        temperatureBar.fillAmount = trapsDestroyed / trapsSpawned;
+        scoreText.text = (Mathf.RoundToInt((trapsDestroyed / trapsSpawned) * 100f).ToString() + "%");
     }
 
     public void ShowEndPanel()
