@@ -28,7 +28,7 @@ public class CloudScript : MonoBehaviour
             Instantiate(destroyEffect, collision.transform.position, Quaternion.identity);
             Destroy(gameObject);
             Destroy(collision.gameObject);
-            scoreControllerScript.trapsDestroyed++; 
+            scoreControllerScript.trapsDestroyed++;
         }
     }
 }

@@ -13,6 +13,8 @@ public class MarekController : MonoBehaviour
     public int Lives = 5;
 
     AudioSource MarekAudioSource;
+    public List<AudioClip> MarekAudios = new List<AudioClip>();
+
     public GameObject booEffect;
 
     Rigidbody2D marekRb;
@@ -69,6 +71,8 @@ public class MarekController : MonoBehaviour
     int yVelocityHash = Animator.StringToHash("yVelocity");
     int groundedHash = Animator.StringToHash("grounded");
 
+
+
     void Start()
     {
         healthScript = hsGO.GetComponent<HealthScript>();
@@ -121,6 +125,7 @@ public class MarekController : MonoBehaviour
                 LSMI.Stop();
                 isDoingSomething = false;
                 ResetCharge();
+                PlayAudio(1);
             }
         }
         else
@@ -136,6 +141,7 @@ public class MarekController : MonoBehaviour
             {
                 Instantiate(jumpEffect, groundCheck.position, Quaternion.identity);
                 marekRb.velocity = new Vector2(marekRb.velocity.x, jumpForce);
+                PlayAudio(Random.Range(2, 4));
             }
         }
 
@@ -159,8 +165,10 @@ public class MarekController : MonoBehaviour
         {
             if(currentManaState > appleManaCost)
             {
-                GameObject instance = Instantiate(shootEffect, gunPosition.position, Quaternion.identity);
-                instance.transform.SetParent(gameObject.transform);
+                PlayAudio(Random.Range(7,9));
+
+                //GameObject instance = Instantiate(shootEffect, gunPosition.position, Quaternion.identity);
+                //instance.transform.SetParent(gameObject.transform);
 
                 GameObject projectile = Instantiate(apple, gunPosition.position, Quaternion.identity);
                 projectile.GetComponent<Rigidbody2D>().AddForce(shotForce);
@@ -191,6 +199,7 @@ public class MarekController : MonoBehaviour
                 {
                     if (CanDoLSMI)
                     {
+                        //PlayAudio(Random.Range(9,11));
                         Charge();
                         if(currentLSMIChargeTime < 0)
                         {
@@ -200,6 +209,8 @@ public class MarekController : MonoBehaviour
                                 isDoingLSMI = true;
                                 LSMI.Play();
                                 hitEffect.Play();
+                                PlayAudio(6);
+                                MarekAudioSource.loop = true;
                             }
                             currentManaState -= LSMIManaCost * Time.deltaTime;
                             RaycastHit2D hit = Physics2D.Raycast(groundCheck.transform.position, Vector2.down);
@@ -232,6 +243,7 @@ public class MarekController : MonoBehaviour
                         //ResetCharge();
                         LSMI.Stop();
                         hitEffect.Stop();
+                        MarekAudioSource.loop = false;
 
                         isDoingSomething = false;
                         isDoingLSMI = false;
@@ -273,6 +285,7 @@ public class MarekController : MonoBehaviour
             {
                 currentManaState -= chargeCost;
                 Instantiate(chargeAttackEffect, gameObject.transform.position, Quaternion.identity);
+                PlayAudio(Random.Range(4, 6));
 
                 RaycastHit2D hit2 = Physics2D.Raycast(gunPosition.transform.position, Vector2.right, chargeDistance, whatIsFog);
 
@@ -298,6 +311,7 @@ public class MarekController : MonoBehaviour
     {
         if(collision.gameObject.tag == "Fog")
         {
+            PlayAudio(Random.Range(11,13));
             healthScript.TakeLive();
             Lives--;
             marekRb.velocity = new Vector2(marekRb.velocity.x, hitKickForce);
@@ -307,6 +321,7 @@ public class MarekController : MonoBehaviour
         }
         if (collision.gameObject.tag == "Frost")
         {
+            PlayAudio(Random.Range(11, 13));
             healthScript.TakeLive();
             Lives--;
             marekRb.velocity = new Vector2(marekRb.velocity.x, hitKickForce);
@@ -316,6 +331,7 @@ public class MarekController : MonoBehaviour
         }
         if (collision.gameObject.tag == "Cloud")
         {
+            PlayAudio(Random.Range(11, 13));
             healthScript.TakeLive();
             Lives--;
             marekRb.velocity = new Vector2(marekRb.velocity.x, hitKickForce);
@@ -335,5 +351,16 @@ public class MarekController : MonoBehaviour
             marekRb.velocity = Vector2.zero;
             scoreControllerScript.ShowEndPanel();
         }
+    }
+
+    void PlayAudio(int number)
+    {
+        if (MarekAudioSource.isPlaying)
+        {
+            MarekAudioSource.Stop();
+        }
+
+        MarekAudioSource.clip = MarekAudios[number];
+        MarekAudioSource.Play();
     }
 }

@@ -12,6 +12,11 @@ public class ScoreController : MonoBehaviour
     public GameObject EndPanel;
     bool canRestart = false;
 
+    AudioSource gameAudio;
+
+    public List<AudioClip> gameAudios = new List<AudioClip>();
+
+
     MarekController marek;
 
     public Image temperatureBar;
@@ -21,6 +26,8 @@ public class ScoreController : MonoBehaviour
     {
         EndPanel.SetActive(false);
         marek = GameObject.FindObjectOfType<MarekController>();
+        gameAudio = GetComponent<AudioSource>();
+        PlayAudio(0);
     }
 
     void Update()
@@ -45,6 +52,7 @@ public class ScoreController : MonoBehaviour
     IEnumerator EndScreen()
     {
         yield return new WaitForSeconds(4f);
+        PlayAudio(1);
         EndPanel.SetActive(true);
         canRestart = true;
         temperatureBar.fillAmount = trapsDestroyed / trapsSpawned;
@@ -55,5 +63,16 @@ public class ScoreController : MonoBehaviour
     {
         StartCoroutine(EndScreen());
         Debug.Log("lol");
+    }
+
+    void PlayAudio(int number)
+    {
+        if (gameAudio.isPlaying)
+        {
+            gameAudio.Stop();
+        }
+
+        gameAudio.clip = gameAudios[number];
+        gameAudio.Play();
     }
 }
