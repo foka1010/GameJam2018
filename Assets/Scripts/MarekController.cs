@@ -71,8 +71,12 @@ public class MarekController : MonoBehaviour
     int yVelocityHash = Animator.StringToHash("yVelocity");
     int groundedHash = Animator.StringToHash("grounded");
     int deathHash = Animator.StringToHash("IsAlive");
+    int winHash = Animator.StringToHash("Win");
+
+    public bool win;
 
     public GameObject shadow;
+    float Scale;
     public float marekHeight;
 
     void Start()
@@ -95,7 +99,7 @@ public class MarekController : MonoBehaviour
 
     void Update()
     {
-        if(isAlive)
+        if(isAlive || win)
         {
             paralaxScript.Speed = -marekRb.velocity.x;
             DoJump();
@@ -109,15 +113,21 @@ public class MarekController : MonoBehaviour
 
         marekHeight = gameObject.transform.position.y;
 
-        //shadow.transform.localScale = Vector3.Lerp(shadow.transform.localScale,)
+        Scale = map(marekHeight, 1, 6, 1, 0.3f);
+        shadow.transform.localScale = new Vector3(Scale, Scale, 1);
     }
 
     private void FixedUpdate()
     {
-        if (isAlive)
+        if (isAlive || win)
         {
             Move();
         }
+    }
+
+    float map(float s, float a1, float a2, float b1, float b2)
+    {
+        return b1 + (s - a1) * (b2 - b1) / (a2 - a1);
     }
 
     void DoJump()
@@ -355,12 +365,22 @@ public class MarekController : MonoBehaviour
     {
         if(Lives == 0)
         {
-            Instantiate(deathEffect, gameObject.transform.position, Quaternion.identity);
-            paralaxScript.Speed = 0;
-            isAlive = false;
-            marekAnimator.SetBool(deathHash, isAlive);
-            marekRb.velocity = Vector2.zero;
-            scoreControllerScript.ShowEndPanel();
+            if(win)
+            {
+                isAlive = false;
+                paralaxScript.Speed = 0;
+                marekAnimator.SetBool(winHash, win);
+                scoreControllerScript.ShowEndPanel();
+            }
+            else
+            {
+                Instantiate(deathEffect, gameObject.transform.position, Quaternion.identity);
+                paralaxScript.Speed = 0;
+                isAlive = false;
+                marekAnimator.SetBool(deathHash, isAlive);
+                marekRb.velocity = Vector2.zero;
+                scoreControllerScript.ShowEndPanel();
+            }
         }
     }
 
