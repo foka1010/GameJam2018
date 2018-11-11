@@ -70,11 +70,14 @@ public class MarekController : MonoBehaviour
     Animator marekAnimator;
     int yVelocityHash = Animator.StringToHash("yVelocity");
     int groundedHash = Animator.StringToHash("grounded");
+    int deathHash = Animator.StringToHash("IsAlive");
 
-
+    public GameObject shadow;
+    public float marekHeight;
 
     void Start()
     {
+        
         healthScript = hsGO.GetComponent<HealthScript>();
         scoreControllerScript = scoreControllerGO.GetComponent<ScoreController>();
         Beam = GetComponent<LineRenderer>();
@@ -85,6 +88,9 @@ public class MarekController : MonoBehaviour
         currentSpeed = speed;
         paralaxScript = GameObject.FindObjectOfType<FreeParallax>();
         marekAnimator = GetComponent<Animator>();
+
+        isAlive = true;
+        marekAnimator.SetBool(deathHash, isAlive);
     }
 
     void Update()
@@ -100,6 +106,10 @@ public class MarekController : MonoBehaviour
             marekAnimator.SetFloat(yVelocityHash,marekRb.velocity.y);
             Die();
         }
+
+        marekHeight = gameObject.transform.position.y;
+
+        //shadow.transform.localScale = Vector3.Lerp(shadow.transform.localScale,)
     }
 
     private void FixedUpdate()
@@ -348,6 +358,7 @@ public class MarekController : MonoBehaviour
             Instantiate(deathEffect, gameObject.transform.position, Quaternion.identity);
             paralaxScript.Speed = 0;
             isAlive = false;
+            marekAnimator.SetBool(deathHash, isAlive);
             marekRb.velocity = Vector2.zero;
             scoreControllerScript.ShowEndPanel();
         }
